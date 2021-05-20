@@ -1,0 +1,69 @@
+$size: 16px;
+$blue: #c3e6fc;
+$darkblue: #0b0c22;
+$green: #9bf162;
+
+//! box-shadow restricted to scrollbar area
+//! transitions don't work at all
+//! background is always white at default/transparent
+//! background-image can be used for scrollbar buttons
+
+.scrollbar {
+  padding: 2rem;
+  background: $darkblue;
+  color: $blue;
+  overflow: auto;
+
+  ul {
+    list-style: none;
+
+    li {
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: $size;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient($blue, $green);
+  border-radius: 4px;
+
+  &:hover {
+    background: linear-gradient(lighten($blue, 10%), lighten($green, 10%));
+  }
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0 5px lighten($darkblue, 10%), inset 0 0 0 8px $darkblue;
+}
+
+// ::-webkit-scrollbar-button:single-button {
+//   position: relative;
+//   height: $size;
+//   background: $darkblue;
+
+//   &:vertical:start {
+//     border-left: $size/2 solid transparent;
+//     border-right: $size/2 solid transparent;
+//     border-bottom: $size solid $blue;
+
+//     &:hover {
+//       border-bottom-color: $green;
+//     }
+//   }
+
+//   &:vertical:end {
+//     border-left: $size/2 solid transparent;
+//     border-right: $size/2 solid transparent;
+//     border-top: $size solid $blue;
+
+//     &:hover {
+//       border-top-color: $green;
+//     }
+//   }
+// }

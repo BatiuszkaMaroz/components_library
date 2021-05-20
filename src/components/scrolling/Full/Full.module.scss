@@ -1,0 +1,64 @@
+$gradients: (
+  linear-gradient(red, orangered),
+  linear-gradient(chartreuse, greenyellow),
+  linear-gradient(deeppink, pink),
+  linear-gradient(gold, yellow),
+  linear-gradient(royalblue, dodgerblue)
+);
+
+.full {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  font-weight: 300;
+
+  scroll-snap-type: y mandatory;
+
+  section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+
+    scroll-snap-align: start;
+
+    .content {
+      position: absolute;
+      bottom: 72px;
+      left: 72px;
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+
+      h2 {
+        display: inline-block;
+        background: white;
+        font-size: 4rem;
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+        font-weight: 500;
+      }
+
+      p {
+        display: inline-block;
+        background: white;
+        padding: 0.5rem;
+        max-width: 60%;
+        margin: 0;
+        font-size: 1.25rem;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  @for $i from 1 through 5 {
+    section:nth-child(#{$i}) {
+      background-image: nth($gradients, $i), url('./images/img#{$i}.jpg');
+    }
+  }
+}

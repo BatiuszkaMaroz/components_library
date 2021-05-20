@@ -1,0 +1,32 @@
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+@mixin breakpoint($key) {
+  $min: map-get($breakpoints, $key);
+
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @warn "There is no `#{$key}` breakpoint.";
+  }
+}
+
+@mixin breakpoint-max($key) {
+  $min: map-get($breakpoints, $key);
+
+  @if $min {
+    @media (max-width: $min) {
+      @content;
+    }
+  } @else {
+    @warn "There is no `#{$key}` breakpoint.";
+  }
+}
